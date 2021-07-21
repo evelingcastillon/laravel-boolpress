@@ -24,8 +24,10 @@ Auth::routes();
 
 
 /* ADMIN ROUTES */
-
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
     Route::get('/', 'HomeController@index')->name('dashboard');
-    Route::get('blogs', BlogController::class);
+    Route::resource('blogs', BlogController::class);
 });
+/*
+    Route::get('/', 'HomeController@index')->name('dashboard');
+}); */
