@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,10 +12,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/* GUEST ROUTES */
+
 Route::get('/', function () {
     return view('welcome');
 });
+//Route::resource('blogs', BlogController::class)->only(['index', 'show']);
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+/* ADMIN ROUTES */
+
+Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
+    Route::get('/', 'HomeController@index')->name('dashboard');
+    Route::get('blogs', BlogController::class);
+});
