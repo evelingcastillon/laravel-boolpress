@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-//Route::resource('blogs', BlogController::class)->only(['index', 'show']);
+Route::resource('blogs', BlogController::class)->only(['index', 'show']);
 
 Auth::routes();
 
@@ -28,6 +28,3 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('blogs', BlogController::class);
 });
-/*
-    Route::get('/', 'HomeController@index')->name('dashboard');
-}); */
