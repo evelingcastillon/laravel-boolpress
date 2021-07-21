@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 /* GUEST ROUTES */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('guest.welcome');
 });
 Route::resource('blogs', BlogController::class)->only(['index', 'show']);
 
