@@ -3,6 +3,16 @@
 @section('content')
 
 <div class="container">
+    <div class="d-flex justify-content-between">
+        <h1>ALL POSTS</h1>
+        <div class="">
+            <a href="{{route('admin.blogs.create')}}" class="btn btn-primary">
+            <i class="fas fa-plus-circle"></i> Add a Post
+            </a>
+        </div>
+    </div>
+
+
     <div class="table-responsive">
     
         <table class="table table-hover">
