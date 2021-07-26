@@ -66,7 +66,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view('admin.blogs.edit', compact('blog'));
     }
 
     /**
@@ -78,7 +78,13 @@ class BlogController extends Controller
      */
     public function update(Request $request, Blog $blog)
     {
-        //
+        $validateData = $request->validate([
+            'title' => 'required | min:5 | max:255',
+            'image_url' => 'nullable | max:255',
+            'paragraph' => 'required'
+        ]);
+        $blog->update($validateData);
+        return redirect()->route('admin.blogs.index');
     }
 
     /**
