@@ -37,7 +37,14 @@ class BlogController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //ddd($request->all());
+        $validateData = $request->validate([
+            'title' => 'required | min:5 | max:255',
+            'image_url' => 'nullable | max:255',
+            'paragraph' => 'required'
+        ]);
+        Blog::create($validateData);
+        return redirect()->route('admin.blogs.index');
     }
 
     /**
