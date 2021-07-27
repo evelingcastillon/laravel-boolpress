@@ -7,7 +7,9 @@
         @foreach($blogs as $blog)
         <div class="col-md-4">
             <div class="card text-left">
-              <img width="100" class="card-img-top" src="{{$blog->image_url}}" alt="{{$blog->title}}">
+              <a href="{{route('blogs.show', $blog->id)}}">
+                <img width="100" class="card-img-top" src="{{$blog->image_url}}" alt="{{$blog->title}}">
+              </a>
               <div class="card-body">
                 <h4 class="card-title">{{$blog->title}}</h4>
                 <p class="card-text">{{$blog->paragraph}}</p>
@@ -16,6 +18,8 @@
         </div>
         @endforeach
     </div>
+
+    {{$blogs->links()}}
 </div>
 
 

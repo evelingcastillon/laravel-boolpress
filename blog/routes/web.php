@@ -14,10 +14,21 @@ use Illuminate\Support\Facades\Route;
 
 /* GUEST ROUTES */
 
-Route::get('/', function () {
+/* Route::get('/', function () {
     return view('guest.welcome');
-});
-Route::resource('blogs', BlogController::class)->only(['index', 'show']);
+}); */
+
+/* Pagine non connesse ad un modello */
+Route::get('/', 'PageController@index')->name('home');
+Route::get('about', 'PageController@about')->name('about');
+Route::get('contacts', 'PageController@contacts')->name('contacts');
+
+/* Pagine dei POST */
+//Route::resource('blogs', BlogController::class)->only(['index', 'show']);
+Route::get('blogs', 'BlogController@index')->name('blogs.index');
+Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
+
+
 
 Auth::routes();
 

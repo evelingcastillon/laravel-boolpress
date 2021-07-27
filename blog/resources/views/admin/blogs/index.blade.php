@@ -43,10 +43,15 @@
                             <i class="fas fa-pencil-alt fa-sm fa-fw"></i>
                         </a>
 
-                        <a href="" class="btn btn-danger">
-
-                            <i class="fas fa-trash fa-sm fa-fws"></i>
-                        </a>
+                        
+                        <form action="{{route('admin.blogs.destroy', $blog->id )}}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">
+    
+                                <i class="fas fa-trash fa-sm fa-fws"></i>
+                            </button>
+                        </form>
                     </td>
                 </tr>
                 @endforeach
