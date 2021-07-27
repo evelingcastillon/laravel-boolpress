@@ -18,7 +18,7 @@
     @method('PUT')
     <div class="form-group">
         <label for="titel">Title</label>
-        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Add a Title" aria-describedby="titleHelper" value="{{$blog->title}}">
+        <input type="text" name="title" id="title" class="form-control @error('title') is-invalid @enderror" placeholder="Add a Title" aria-describedby="titleHelper" min="5" max="255" value="{{$blog->title}}" required>
         <small id="titleHelper" class="text-muted">Type a title for the current post, max 255char</small>
     </div>
 

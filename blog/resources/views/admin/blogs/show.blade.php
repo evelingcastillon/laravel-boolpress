@@ -16,8 +16,6 @@
         Edit 
     </a>
 
-    
-
     <a href="" class="btn btn-danger">
         <i class="fas fa-trash fa-sm fa-fws"></i>
     </a>

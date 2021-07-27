@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Blog;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller
 {
@@ -40,9 +41,15 @@ class BlogController extends Controller
         //ddd($request->all());
         $validateData = $request->validate([
             'title' => 'required | min:5 | max:255',
-            'image_url' => 'nullable | max:255',
+            'image_url' => 'nullable | image | max:550 ',
             'paragraph' => 'required'
         ]);
+
+        $file_path = Storage::put('blog_images', $validateData['image_url']);
+
+        //ddd($file_path);
+        $validateData['image_url'] = $file_path;
+
         Blog::create($validateData);
         return redirect()->route('admin.blogs.index');
     }
@@ -83,6 +90,14 @@ class BlogController extends Controller
             'image_url' => 'nullable | max:255',
             'paragraph' => 'required'
         ]);
+
+        if (array_key_exists('image_url', $validateData)) {
+            $file_path = Storage::put('blog_images', $validateData['image_url']);
+            //ddd($file_path);
+            
+            $validateData['image_url'] = $file_path;
+        }
+
         $blog->update($validateData);
         return redirect()->route('admin.blogs.index');
     }

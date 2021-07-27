@@ -31,7 +31,7 @@
                 @foreach($blogs as $blog)
                 <tr>
                     <td>{{$blog->id}}</td>
-                    <td><img width="200" src="{{$blog->image_url}}" alt="{{$blog->title}}"></td>
+                    <td><img width="200" src="{{asset('storage/' . $blog->image_url)}}" alt="{{$blog->title}}"></td>
                     <td>{{$blog->title}}</td>
                     <td>{{$blog->paragraph}}</td>
                     <td>

@@ -23,6 +23,8 @@ Route::get('/', 'PageController@index')->name('home');
 Route::get('about', 'PageController@about')->name('about');
 Route::get('contacts', 'PageController@contacts')->name('contacts');
 
+Route::post('contacts', 'PageController@sendContactForm')->name('contacts.send');
+
 /* Pagine dei POST */
 //Route::resource('blogs', BlogController::class)->only(['index', 'show']);
 Route::get('blogs', 'BlogController@index')->name('blogs.index');
@@ -30,7 +32,7 @@ Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
 
 
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 
 
