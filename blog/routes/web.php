@@ -32,7 +32,8 @@ Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
 
 
 
-Auth::routes(['register' => false]);
+//Auth::routes(['register' => false]); CHIUSURA DELLA REGISTRAZIONE
+Auth::routes();
 
 
 
