@@ -45,15 +45,18 @@ class BlogController extends Controller
         $validateData = $request->validate([
             'title' => 'required | min:5 | max:255',
             'image_url' => 'nullable | image | max:550 ',
-            'paragraph' => 'required'
+            'paragraph' => 'required',
+            'category_id' => 'nullable | exists:categories,id'
         ]);
 
+        // validate data
         $file_path = Storage::put('blog_images', $validateData['image_url']);
-
-        //ddd($file_path);
+            //ddd($file_path);
         $validateData['image_url'] = $file_path;
-
+        //creare risorsa
         Blog::create($validateData);
+
+        //return redirect
         return redirect()->route('admin.blogs.index');
     }
 
@@ -90,7 +93,7 @@ class BlogController extends Controller
     {
         $validateData = $request->validate([
             'title' => 'required | min:5 | max:255',
-            'image_url' => 'nullable | max:255',
+            'image_url' => 'nullable | image | max:200',
             'paragraph' => 'required'
         ]);
 
