@@ -31,7 +31,6 @@ Route::get('blogs', 'BlogController@index')->name('blogs.index');
 Route::get('blogs/{blog}', 'BlogController@show')->name('blogs.show');
 
 
-
 //Auth::routes(['register' => false]); CHIUSURA DELLA REGISTRAZIONE
 Auth::routes();
 
@@ -41,4 +40,8 @@ Auth::routes();
 Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->group(function() {
     Route::get('/', 'HomeController@index')->name('dashboard');
     Route::resource('blogs', BlogController::class);
+});
+
+Route::get('vue-blogs', function () {
+    return view('blogs');
 });
