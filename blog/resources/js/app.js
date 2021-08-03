@@ -32,11 +32,11 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     data: {
-        blogs: null
+        posts: null
     },
     mounted() {
         Axios.get('/api/blogs').then(resp => {
-            this.blogs = resp.data.data;
+            this.posts = resp.data.data;
         }).catch(e => {
             console.error('Sorry!' + e);
         })
