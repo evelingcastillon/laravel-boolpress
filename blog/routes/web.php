@@ -42,6 +42,8 @@ Route::middleware('auth')->prefix('admin')->namespace('Admin')->name('admin.')->
     Route::resource('blogs', BlogController::class);
 });
 
+
+//VUE-BLOGS
 Route::get('vue-blogs', function () {
     return view('blogs');
 });
