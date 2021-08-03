@@ -22,6 +22,9 @@ window.Vue = require('vue');
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('post-component', require('./components/PostComponent.vue').default);
+Vue.component('posts-component', require('./components/PostsComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -37,6 +40,7 @@ const app = new Vue({
     mounted() {
         Axios.get('/api/blogs').then(resp => {
             this.posts = resp.data.data;
+            console.log(this.posts);
         }).catch(e => {
             console.error('Sorry!' + e);
         })
