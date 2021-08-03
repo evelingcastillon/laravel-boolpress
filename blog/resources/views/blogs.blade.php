@@ -22,13 +22,13 @@
 <body>
     <div id="app">
         
-        <div class="container">
-            <h1>Vue Posts</h1>
-            <div class="card text-left" v-for="post in posts">
-                <img class="card-img-top" :src="post.image_url" alt="">
+        <h1>Vue Posts</h1>
+        <div class="container d-flex flex-wrap">
+            <div class="card text-left" width="200" v-for="post in posts">
+                <img class="card-img-top"  :src="post.image_url" alt="">
                 <div class="card-body">
                     <h4 class="card-title">@{{post.title}}</h4>
-                    <p class="card-text">Body</p>
+                    <p class="card-text">@{{post.paragraph}}</p>
                 </div>
             </div>
         </div>
